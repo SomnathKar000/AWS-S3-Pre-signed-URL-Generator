@@ -1,0 +1,27 @@
+service: serverless
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ap-south-1
+  # apiName: serverless-S3-presigned-urls
+  # stage: dev
+
+# you can overwrite defaults here
+#  stage: dev
+#  region: us-east-1
+
+functions:
+  getS3PresignedUrl:
+    handler: getUrl.handler
+    events:
+      - http:
+          path: /getpresignedurl
+          method: get
+
+resources:
+  Resources:
+    S3Bucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: s3-presigned-urls
