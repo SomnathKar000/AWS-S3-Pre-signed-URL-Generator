@@ -4,8 +4,6 @@ provider:
   name: aws
   runtime: nodejs18.x
   region: ap-south-1
-  # apiName: serverless-S3-presigned-urls
-  # stage: dev
 
 # you can overwrite defaults here
 #  stage: dev
@@ -17,7 +15,7 @@ functions:
     events:
       - http:
           path: /getpresignedurl
-          method: get
+          method: post
 
 resources:
   Resources:
