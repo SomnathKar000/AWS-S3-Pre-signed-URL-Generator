@@ -10,3 +10,11 @@ export const getUploadUrl = (key: string) => {
   });
   return url;
 };
+
+export const getDownloadUrl = (key: string) => {
+  const url = s3.getSignedUrlPromise("getObject", {
+    Bucket: bucketName,
+    Key: key,
+  });
+  return url;
+};

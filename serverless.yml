@@ -20,6 +20,12 @@ functions:
       - http:
           path: /getpresignedurl
           method: post
+  downloadFile:
+    handler: dist/handlers/downloadFile.handler
+    events:
+      - http:
+          path: /downloadfile
+          method: post
 
 resources:
   Resources:
