@@ -4,7 +4,11 @@ provider:
   name: aws
   runtime: nodejs18.x
   region: ap-south-1
+  environment:
+    S3_BUCKET_NAME: ${self:custom.BucketName}
 
+custom:
+  BucketName: s3-presigned-urls
 # you can overwrite defaults here
 #  stage: dev
 #  region: us-east-1
@@ -22,4 +26,4 @@ resources:
     S3Bucket:
       Type: AWS::S3::Bucket
       Properties:
-        BucketName: s3-presigned-urls
+        BucketName: ${self:custom.BucketName}
