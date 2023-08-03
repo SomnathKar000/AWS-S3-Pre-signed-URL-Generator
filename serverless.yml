@@ -11,7 +11,7 @@ provider:
 
 functions:
   getS3PresignedUrl:
-    handler: getUrl.handler
+    handler: dist/handlers/generateUploadUrl.handler
     events:
       - http:
           path: /getpresignedurl
