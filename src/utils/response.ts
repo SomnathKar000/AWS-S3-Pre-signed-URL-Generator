@@ -5,7 +5,7 @@ export const successResponse = (body: any): APIGatewayProxyResult => {
     statusCode: 200,
     headers: {
       "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "OPTIONS,POST",
+      "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT,DELETE",
       "Access-Control-Allow-Headers": "Content-Type",
     },
     body: JSON.stringify({ ...body, success: true }),
