@@ -6,6 +6,13 @@ provider:
   region: ap-south-1
   environment:
     S3_BUCKET_NAME: ${self:custom.BucketName}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:GetObject
+        - s3:PutObject
+        - s3:PutObjectAcl
+      Resource: "arn:aws:s3:::${self:custom.BucketName}/*"
 
 custom:
   BucketName: s3-presigned-urls
