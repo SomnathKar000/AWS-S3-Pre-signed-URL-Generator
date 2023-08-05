@@ -6,7 +6,7 @@ export const getUploadUrl = (key: string, contentType: string) => {
   const url = s3.getSignedUrlPromise("putObject", {
     Bucket: bucketName,
     Key: key,
-    Expires: 60,
+    Expires: 60 * 5,
     ContentType: contentType,
   });
   return url;
