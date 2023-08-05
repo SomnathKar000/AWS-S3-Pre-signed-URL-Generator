@@ -16,9 +16,6 @@ provider:
 
 custom:
   BucketName: s3-presigned-urls
-# you can overwrite defaults here
-#  stage: dev
-#  region: us-east-1
 
 functions:
   getS3PresignedUrl:

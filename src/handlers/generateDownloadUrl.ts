@@ -9,6 +9,6 @@ export const handler = async (event: APIGatewayProxyEvent) => {
     return errorResponse("Invalid file path", 400);
   }
   const url = await getDownloadUrl(fileName);
-  const message = "Go Serverless v1.0! Your function executed successfully!";
-  return successResponse({ message, fileName, url });
+  const message = "Successfully generated presigned URL";       
+  return successResponse({ message, url });
 };
