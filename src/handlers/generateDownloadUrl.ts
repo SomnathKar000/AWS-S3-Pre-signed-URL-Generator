@@ -8,7 +8,11 @@ export const handler = async (event: APIGatewayProxyEvent) => {
   if (!fileName || !ContentType) {
     return errorResponse("Invalid request", 400);
   }
-  const url = await getDownloadUrl(fileName, ContentType);
-  const message = "Successfully generated presigned URL";
-  return successResponse({ message, url });
+  try {
+    const url = await getDownloadUrl(fileName, ContentType);
+    const message = "Successfully generated presigned URL";
+    return successResponse({ message, fileName, url });
+  } catch (error) {
+    return errorResponse(JSON.stringify(error), 500);
+  }
 };
