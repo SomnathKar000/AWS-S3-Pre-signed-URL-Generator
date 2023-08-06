@@ -25,7 +25,7 @@ functions:
           path: /getpresignedurl
           method: post
   downloadFile:
-    handler: dist/handlers/downloadFile.handler
+    handler: dist/handlers/generateDownloadUrl.handler
     events:
       - http:
           path: /downloadfile

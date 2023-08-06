@@ -17,7 +17,7 @@ export const getDownloadUrl = (key: string, contentType: string) => {
     Bucket: bucketName,
     Key: key,
     Expires: 60 * 5,
-    ContentType: contentType,
+    // ContentType: contentType,
   });
   return url;
 };
