@@ -12,11 +12,12 @@ export const getUploadUrl = (key: string, contentType: string) => {
   return url;
 };
 
-export const getDownloadUrl = (key: string) => {
+export const getDownloadUrl = (key: string, contentType: string) => {
   const url = s3.getSignedUrlPromise("getObject", {
     Bucket: bucketName,
     Key: key,
     Expires: 60 * 5,
+    ContentType: contentType,
   });
   return url;
 };
