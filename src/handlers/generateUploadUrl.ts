@@ -18,6 +18,6 @@ export const handler = (event: APIGatewayProxyEvent) => {
     });
   } catch (error) {
     console.error("Error generating presigned URL:", error);
-    return errorResponse("Internal server error", 500);
+    return errorResponse(JSON.stringify(error), 500);
   }
 };
