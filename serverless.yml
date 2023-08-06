@@ -23,14 +23,12 @@ functions:
       - http:
           path: /uploadFile
           method: post
-          cors: true
   downloadFile:
     handler: dist/handlers/generateDownloadUrl.handler
     events:
       - http:
           path: /downloadFile
           method: post
-          cors: true
 
 resources:
   Resources:
