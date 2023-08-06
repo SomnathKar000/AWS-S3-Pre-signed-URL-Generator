@@ -9,15 +9,10 @@ export const handler = (event: APIGatewayProxyEvent) => {
     return errorResponse("fileName is required", 400);
   }
 
-  try {
-    const url = getUrl(fileName, "putObject");
-    return successResponse({
-      message: "Successfully generated presigned URL",
-      fileName,
-      url,
-    });
-  } catch (error) {
-    console.error("Error generating presigned URL:", error);
-    return errorResponse(JSON.stringify(error), 500);
-  }
+  const url = getUrl(fileName, "putObject");
+  return successResponse({
+    message: "Successfully generated presigned URL",
+    fileName,
+    url,
+  });
 };

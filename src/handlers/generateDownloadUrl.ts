@@ -8,14 +8,9 @@ export const handler = (event: APIGatewayProxyEvent) => {
   if (!fileName) {
     return errorResponse("fileName is required", 400);
   }
-  try {
-    const url = getUrl(fileName, "getObject");
-    return successResponse({
-      message: "Successfully generated presigned URL",
-      url,
-    });
-  } catch (error) {
-    console.error("Error generating presigned URL:", error);
-    return errorResponse(JSON.stringify(error), 500);
-  }
+  const url = getUrl(fileName, "getObject");
+  return successResponse({
+    message: "Successfully generated presigned URL",
+    url,
+  });
 };
