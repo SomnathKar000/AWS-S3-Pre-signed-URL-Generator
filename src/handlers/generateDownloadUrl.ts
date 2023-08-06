@@ -4,12 +4,12 @@ import { errorResponse } from "../utils/errorHandler";
 import { successResponse } from "../utils/response";
 
 export const handler = async (event: APIGatewayProxyEvent) => {
-  const { fileName, ContentType } = JSON.parse(event.body!);
-  if (!fileName || !ContentType) {
-    return errorResponse("Invalid request", 400);
+  const { fileName } = JSON.parse(event.body!);
+  if (!fileName) {
+    return errorResponse("fileName is required", 400);
   }
   try {
-    const url = await getDownloadUrl(fileName, ContentType);
+    const url = await getDownloadUrl(fileName);
     const message = "Successfully generated presigned URL";
     return successResponse({ message, fileName, url });
   } catch (error) {
