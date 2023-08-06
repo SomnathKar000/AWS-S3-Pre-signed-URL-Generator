@@ -16,6 +16,7 @@ export const getDownloadUrl = (key: string) => {
   const url = s3.getSignedUrlPromise("getObject", {
     Bucket: bucketName,
     Key: key,
+    Expires: 60 * 5,
   });
   return url;
 };
