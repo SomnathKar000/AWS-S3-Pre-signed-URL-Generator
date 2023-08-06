@@ -4,7 +4,6 @@ provider:
   name: aws
   runtime: nodejs18.x
   region: ap-south-1
-  stage: dev2
   environment:
     S3_BUCKET_NAME: ${self:custom.BucketName}
   iamRoleStatements:
