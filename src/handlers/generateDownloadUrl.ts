@@ -10,5 +10,5 @@ export const handler = async (event: APIGatewayProxyEvent) => {
   }
   const url = await getDownloadUrl(fileName);
   const message = "Successfully generated presigned URL";
-  return successResponse({ messag, url });
+  return successResponse({ message, url });
 };
