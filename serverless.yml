@@ -11,7 +11,6 @@ provider:
       Action:
         - s3:GetObject
         - s3:PutObject
-        - s3:PutObjectAcl
       Resource: "arn:aws:s3:::${self:custom.BucketName}/*"
 
 custom:
@@ -22,14 +21,16 @@ functions:
     handler: dist/handlers/generateUploadUrl.handler
     events:
       - http:
-          path: /getpresignedurl
+          path: /uploadFile
           method: post
+          cors: true
   downloadFile:
     handler: dist/handlers/generateDownloadUrl.handler
     events:
       - http:
-          path: /downloadfile
+          path: /downloadFile
           method: post
+          cors: true
 
 resources:
   Resources:
@@ -37,3 +38,8 @@ resources:
       Type: AWS::S3::Bucket
       Properties:
         BucketName: ${self:custom.BucketName}
+        PublicAccessBlockConfiguration:
+          BlockPublicAcls: true
+          BlockPublicPolicy: true
+          IgnorePublicAcls: true
+          RestrictPublicBuckets: true

@@ -1,14 +1,21 @@
 import { APIGatewayProxyEvent } from "aws-lambda";
-import { getDownloadUrl } from "../services/s3Service";
+import { getUrl } from "../services/s3Service";
 import { errorResponse } from "../utils/errorHandler";
 import { successResponse } from "../utils/response";
 
-export const handler = async (event: APIGatewayProxyEvent) => {
+export const handler = (event: APIGatewayProxyEvent) => {
   const { fileName } = JSON.parse(event.body!);
   if (!fileName) {
     return errorResponse("fileName is required", 400);
   }
-  const url = await getDownloadUrl(fileName);
-  const message = "Successfully generated presigned URL";
-  return successResponse({ message, url });
+  try {
+    const url = getUrl(fileName, "getObject");
+    return successResponse({
+      message: "Successfully generated presigned URL",
+      url,
+    });
+  } catch (error) {
+    console.error("Error generating presigned URL:", error);
+    return errorResponse("Internal server error", 500);
+  }
 };
