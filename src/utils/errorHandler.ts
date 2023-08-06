@@ -6,6 +6,11 @@ export const errorResponse = (
 ): APIGatewayProxyResult => {
   return {
     statusCode: statusCode,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT,DELETE",
+      "Access-Control-Allow-Headers": "Content-Type",
+    },
     body: JSON.stringify({ message, success: false }),
   };
 };
