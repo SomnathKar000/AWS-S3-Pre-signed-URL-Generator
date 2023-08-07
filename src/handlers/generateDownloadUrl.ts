@@ -15,6 +15,9 @@ export const handler = (event: APIGatewayProxyEvent) => {
   // });
   return {
     statusCode: 200,
+    headers: {
+      "content-type": "application/json",
+    },
     body: JSON.stringify({ message: "Successfully generated presigned URL" }),
   };
 };
