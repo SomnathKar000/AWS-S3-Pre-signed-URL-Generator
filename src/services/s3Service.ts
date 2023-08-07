@@ -1,6 +1,6 @@
-import { S3 } from "aws-sdk";
-const s3 = new S3();
-const bucketName = process.env.S3_BUCKET_NAME!;
+import { bucketName, aws } from "../config/aws";
+
+const s3 = new aws.S3();
 
 export const getUrl = (key: string, type: string): Promise<string> => {
   const url = s3.getSignedUrlPromise(type, {
