@@ -29,6 +29,12 @@ functions:
       - http:
           path: /download
           method: post
+  getPresignedUrl:
+    handler: dist/handlers/getPresignedUrl.handler
+    events:
+      - http:
+          path: /getPresignedUrl
+          method: post
 
 resources:
   Resources:
