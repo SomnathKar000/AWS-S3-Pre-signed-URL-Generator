@@ -21,13 +21,13 @@ functions:
     handler: dist/handlers/generateUploadUrl.handler
     events:
       - http:
-          path: /uploadFile
+          path: /upload
           method: post
   downloadFile:
     handler: dist/handlers/generateDownloadUrl.handler
     events:
       - http:
-          path: /downloadFile
+          path: /download
           method: post
 
 resources:
@@ -36,5 +36,3 @@ resources:
       Type: AWS::S3::Bucket
       Properties:
         BucketName: ${self:custom.BucketName}
-        PublicAccessBlockConfiguration:
-          BlockPublicAcls: true
